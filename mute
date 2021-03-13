@@ -9,7 +9,6 @@ while true; do
   END {print m[s]}')" = "no" ]; then
 		   pacmd list-sink-inputs | grep -c 'state: RUNNING' || pactl set-sink-mute 0 toggle
 		else
-		   #cat /proc/asound/card*/pcm*/sub*/status | grep RUNNING && xdotool key XF86AudioMute
 		   pacmd list-sink-inputs | grep -c 'state: RUNNING' && pactl set-sink-mute 0 toggle
 		fi
 done
