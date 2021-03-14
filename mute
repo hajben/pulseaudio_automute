@@ -3,12 +3,6 @@
 #mutes when sound output is inactive
 while true; do
 	sleep 0.1
-    if [ "$(pacmd dump | awk '
-  $1 == "set-sink-mute" {m[$2] = $3}
-  $1 == "set-default-sink" {s = $2}
-  END {print m[s]}')" = "no" ]; then
-		   pacmd list-sink-inputs | grep -c 'state: RUNNING' || pactl set-sink-mute 0 toggle
-		else
-		   pacmd list-sink-inputs | grep -c 'state: RUNNING' && pactl set-sink-mute 0 toggle
-		fi
+    pacmd list-sink-inputs | grep -c 'state: RUNNING'  && pactl set-sink-mute 0 off || pactl set-sink-mute 0 on
 done
+
