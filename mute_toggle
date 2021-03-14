@@ -2,4 +2,4 @@
 
 #mute toggle
 
-pgrep "mute" && killall mute && pactl set-sink-mute 0 toggle || mute > /dev/null
+pgrep "mute" && killall mute && pactl set-sink-mute 0 off || mute > /dev/null
